@@ -7,10 +7,10 @@ app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'yukimatsui',
-  password: 'yuuki2044',
-  database: 'list-app'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'yukimatsui',
+  password: process.env.DB_PASSWORD || 'yuuki2044',
+  database: process.env.DB_DATABASE || 'list-app'
 });
 
 app.get('/', (req, res) => {
